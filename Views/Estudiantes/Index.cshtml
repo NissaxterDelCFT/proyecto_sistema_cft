@@ -1,0 +1,72 @@
+﻿@model IEnumerable<proyecto_sistema_cft.Models.Estudiante>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="titulo">
+    <h1><center>Lista de Estudiantes</center></h1>
+<p>
+    <a asp-action="Create"class="btn btn-success">Agregar</a>
+</p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Rut
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Correo Electronico
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                Fecha Nacimiento
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-primary">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
